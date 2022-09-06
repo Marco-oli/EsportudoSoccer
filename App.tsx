@@ -1,11 +1,14 @@
 import React from 'react';
-import {SafeAreaView, StatusBar} from 'react-native';
+import {StatusBar} from 'react-native';
+
+import {Routes} from './src/Routes/Routes';
 
 const App = () => {
   return (
-    <SafeAreaView style={{flex: 1}}>
+    <>
       <StatusBar barStyle={'light-content'} />
-    </SafeAreaView>
+      <Routes />
+    </>
   );
 };
 
