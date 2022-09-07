@@ -3,7 +3,7 @@ import {View, Text} from 'react-native';
 
 // import { Container } from './styles';
 
-export const TeamDetailsScreen = () => {
+export const TeamScreen = () => {
   return (
     <View>
       <Text>Team Detail</Text>
