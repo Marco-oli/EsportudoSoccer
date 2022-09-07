@@ -1,6 +1,6 @@
 import {useCallback, useState} from 'react';
-import {ICountriesParams} from '../../interfaces/countries';
-import api from '../../services/api';
+import {ICountriesParams} from '../interfaces/countries';
+import api from '../services/api';
 
 export const useGetCountries = () => {
   const [countries, setCountries] = useState<ICountriesParams[]>([]);

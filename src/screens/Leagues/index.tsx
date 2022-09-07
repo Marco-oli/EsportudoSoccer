@@ -4,8 +4,8 @@ import {ActivityIndicator, FlatList} from 'react-native';
 import {Picker} from '@react-native-picker/picker';
 import {CustomText} from '../../components/CustomText';
 
-import {useGetCountries} from '../../hooks/Home/useGetCountries';
-import {useGetLeagues} from '../../hooks/Home/useGetLeagues';
+import {useGetCountries} from '../../hooks/useGetCountries';
+import {useGetLeagues} from '../../hooks/useGetLeagues';
 
 import {Container, ContainerPicker, ContainerLoading, styles} from './styles';
 import {colors} from '../../assets/colors';
@@ -13,7 +13,7 @@ import {CardInfo} from '../../components/CardInfo';
 
 export const LeagueScreen = () => {
   const {getLeagues, leagues, loadingLeagues} = useGetLeagues();
-  const {countries, getCountries, loadingCountries} = useGetCountries();
+  const {countries, getCountries} = useGetCountries();
 
   const [country, setCountry] = useState();
 
@@ -26,8 +26,6 @@ export const LeagueScreen = () => {
       getLeagues(country);
     }
   }, [country, getLeagues]);
-
-  console.log(leagues);
 
   return (
     <Container>
