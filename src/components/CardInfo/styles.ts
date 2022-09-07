@@ -23,7 +23,6 @@ export const ContainerLogo = styled.View`
   border-radius: 4px;
   align-items: center;
   justify-content: center;
-  border: 1px solid white;
 `;
 
 export const ContainerInfos = styled.View`

@@ -9,6 +9,7 @@ import {useGetLeagues} from '../../hooks/Home/useGetLeagues';
 
 import {Container, ContainerPicker, ContainerLoading, styles} from './styles';
 import {colors} from '../../assets/colors';
+import {CardInfo} from '../../components/CardInfo';
 
 export const LeagueScreen = () => {
   const {getLeagues, leagues, loadingLeagues} = useGetLeagues();
@@ -27,14 +28,6 @@ export const LeagueScreen = () => {
   }, [country, getLeagues]);
 
   console.log(leagues);
-
-  if (loadingCountries || loadingLeagues) {
-    return (
-      <ContainerLoading>
-        <ActivityIndicator size="large" color={colors.black} />
-      </ContainerLoading>
-    );
-  }
 
   return (
     <Container>
@@ -58,14 +51,23 @@ export const LeagueScreen = () => {
         </Picker>
       </ContainerPicker>
 
-      <FlatList
-        data={leagues}
-        renderItem={({item}) => (
-          <CustomText size={16} weight={700} style={styles.titlePicker}>
-            {item.league.name}
-          </CustomText>
-        )}
-      />
+      {loadingLeagues ? (
+        <ContainerLoading>
+          <ActivityIndicator size="large" color={colors.white} />
+        </ContainerLoading>
+      ) : (
+        <FlatList
+          data={leagues}
+          style={{marginTop: 15}}
+          renderItem={({item}) => (
+            <CardInfo
+              name={item.league.name}
+              type={item.league.type}
+              logo={item.league.logo}
+            />
+          )}
+        />
+      )}
     </Container>
   );
 };
