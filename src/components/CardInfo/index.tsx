@@ -12,23 +12,36 @@ import {
   Image,
 } from './styles';
 
-export const CardInfo = ({logo, type, name}: ILeagueParams) => {
+export const CardInfo = ({
+  logo,
+  type,
+  name,
+  selected,
+  onPress,
+}: ILeagueParams) => {
   return (
-    <Container>
+    <Container selected={selected} onPress={onPress}>
       <ContainerLogo>
         <Image source={{uri: logo}} />
       </ContainerLogo>
 
       <ContainerInfos>
         <ContainerTitle>
-          <CustomText size={18} weight={500} style={{marginBottom: 5}}>
+          <CustomText
+            size={18}
+            weight={500}
+            color={selected ? colors.white : colors.black}
+            style={{marginBottom: 5}}>
             Name: {name}
           </CustomText>
         </ContainerTitle>
 
         <ContainerType>
-          <CustomText size={14} weight={500} color={colors.gray}>
-            Type: {type}
+          <CustomText
+            size={14}
+            weight={500}
+            color={selected ? colors.gray : colors.black_seconday}>
+            {type}
           </CustomText>
         </ContainerType>
       </ContainerInfos>

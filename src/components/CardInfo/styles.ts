@@ -1,13 +1,14 @@
 import styled from 'styled-components/native';
 
-export const Container = styled.View`
+export const Container = styled.TouchableOpacity`
   flex-direction: row;
   align-items: center;
 
   padding: 22px 25px;
   border: 1px solid ${props => props.theme.colors.purple};
   border-radius: 8px;
-  background-color: ${props => props.theme.colors.black_seconday};
+  background-color: ${props =>
+    props.selected ? props.theme.colors.black : props.theme.colors.white};
   margin-bottom: 16px;
 `;
 
