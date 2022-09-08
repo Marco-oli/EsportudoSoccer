@@ -10,12 +10,14 @@ import {useGetLeagues} from '../../hooks/useGetLeagues';
 import {Container, ContainerPicker, ContainerLoading, styles} from './styles';
 import {colors} from '../../assets/colors';
 import {CardInfo} from '../../components/CardInfo';
+import {useLeagueContext} from '../../context/leagueContext';
 
 export const LeagueScreen = () => {
   const {getLeagues, leagues, loadingLeagues} = useGetLeagues();
   const {countries, getCountries} = useGetCountries();
+  const {leagueData, setLeagueData} = useLeagueContext();
 
-  const [country, setCountry] = useState();
+  const [country, setCountry] = useState('');
 
   useEffect(() => {
     getCountries();
@@ -57,11 +59,22 @@ export const LeagueScreen = () => {
         <FlatList
           data={leagues}
           style={{marginTop: 15}}
+          ListHeaderComponent={
+            <CustomText
+              size={16}
+              weight={700}
+              style={[styles.titlePicker, {marginBottom: 10}]}>
+              selecione uma liga e vá para aba Teams
+            </CustomText>
+          }
           renderItem={({item}) => (
             <CardInfo
+              onPress={() => setLeagueData(item.league)}
+              selected={item.league.id === leagueData.id}
               name={item.league.name}
               type={item.league.type}
               logo={item.league.logo}
+              {...item.league}
             />
           )}
         />
