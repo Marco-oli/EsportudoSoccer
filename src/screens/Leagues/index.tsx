@@ -55,17 +55,19 @@ export const LeagueScreen = () => {
         <ContainerLoading>
           <ActivityIndicator size="large" color={colors.white} />
         </ContainerLoading>
-      ) : (
+      ) : !country ? null : (
         <FlatList
           data={leagues}
           style={{marginTop: 15}}
           ListHeaderComponent={
-            <CustomText
-              size={16}
-              weight={700}
-              style={[styles.titlePicker, {marginBottom: 10}]}>
-              selecione uma liga e vá para aba Teams
-            </CustomText>
+            country ? (
+              <CustomText
+                size={16}
+                weight={700}
+                style={[styles.titlePicker, {marginBottom: 10}]}>
+                selecione uma liga e vá para aba Teams
+              </CustomText>
+            ) : null
           }
           renderItem={({item}) => (
             <CardInfo
